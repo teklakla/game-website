@@ -18,7 +18,7 @@ acceptCookies.addEventListener('click', () => {
   cookieBanner.style.display = 'none';
 });
 
-// ========== GAME FETCHING WITH SEARCH, FILTER, PAGINATION ==========
+
 const apiKey = 'b269bd1af3e04e46bcef5dc171f80025';
 const gamesContainer = document.getElementById('gamesContainer');
 const pagination = document.createElement('div');
@@ -83,8 +83,8 @@ function toggleFavorite(id) {
     favorites.push(id);
   }
   saveFavoriteIds(favorites);
-  fetchGames();        // refresh game cards
-  loadFavoriteGames(); // refresh favorites section
+  fetchGames();
+  loadFavoriteGames();
 }
 
 function displayGames(games) {
@@ -147,7 +147,7 @@ genreSelect.addEventListener('change', (e) => {
 
 fetchGames();
 
-// ========== MODAL ==========
+
 const modal = document.createElement('div');
 modal.className = 'modal';
 modal.innerHTML = `
@@ -199,7 +199,7 @@ async function openModal(gameId) {
   modal.style.display = 'block';
 }
 
-// ========== FAVORITES SECTION ==========
+
 async function loadFavoriteGames() {
   const favoritesContainer = document.getElementById('favoritesContainer');
   const favoriteIds = getFavoriteIds();
@@ -211,7 +211,7 @@ async function loadFavoriteGames() {
 
   favoritesContainer.innerHTML = '';
 
-  // Fetch each favorite game
+
   for (const gameId of favoriteIds) {
     try {
       const res = await fetch(`https://api.rawg.io/api/games/${gameId}?key=${apiKey}`);
@@ -244,10 +244,10 @@ async function loadFavoriteGames() {
   }
 }
 
-// Load favorites when page loads
+
 loadFavoriteGames();
 
-// ========== CONTACT FORM ==========
+
 const form = document.getElementById('contactForm');
 const togglePasswordBtn = document.getElementById('togglePassword');
 const passwordInput = document.getElementById('password');
