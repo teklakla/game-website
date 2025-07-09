@@ -185,20 +185,6 @@ async function openModal(gameId) {
   modal.style.display = 'block';
 }
 
-async function openModal(gameId) {
-  const res = await fetch(`https://api.rawg.io/api/games/${gameId}?key=${apiKey}`);
-  const game = await res.json();
-
-  document.getElementById('modalImage').src = game.background_image;
-  document.getElementById('modalTitle').textContent = game.name;
-  document.getElementById('modalRelease').textContent = game.released;
-  document.getElementById('modalGenres').textContent = game.genres.map(g => g.name).join(', ');
-  document.getElementById('modalPlatforms').textContent = game.platforms.map(p => p.platform.name).join(', ');
-  document.getElementById('modalDescription').innerHTML = game.description || 'აღწერა მიუწვდომელია';
-
-  modal.style.display = 'block';
-}
-
 
 async function loadFavoriteGames() {
   const favoritesContainer = document.getElementById('favoritesContainer');
